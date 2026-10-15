@@ -9,8 +9,8 @@ Làm cho **VS Code 1.142** trên macOS. Chưa thử trên Windows và Linux.
 ## Cài
 
 ```bash
-git clone https://github.com/duongidle/vscode_style.git
-cd vscode_style
+git clone https://github.com/duongidle/vscode_v-float-clay_style.git
+cd vscode_v-float-clay_style
 ./install.sh
 ```
 
