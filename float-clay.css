@@ -349,6 +349,7 @@ html .monaco-workbench.floating-panels .part.sidebar .composite.title .title-lab
 }
 html .monaco-workbench.floating-panels .part.sidebar .pane-header {
   padding-left: 7px;
+  padding-right: 12px; /* sidebar bị cắt 13px ở mép phải; chừa chỗ để cụm icon bên phải không chạm viền */
 }
 
 /* ---- tiêu đề thư mục gốc viết hoa giãn chữ; dòng đang chọn đậm chữ ---- */
