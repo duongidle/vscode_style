@@ -4,8 +4,6 @@ Giao diện sáng, bo góc, tối giản (kiểu Claude Desktop / Codex): Explor
 
 ![Giao diện mẫu](images/demo.png)
 
-*Ảnh là bản mẫu mô phỏng bằng HTML (`demo-mockup.html`), bản thật trong VS Code gần giống chứ không khớp từng pixel.*
-
 Viết và kiểm tra trên **VS Code 1.142.0**. Phần CSS bám vào cấu trúc nội bộ của VS Code nên một bản cập nhật lớn có thể làm lệch vài chỗ.
 
 ## Trong gói này
