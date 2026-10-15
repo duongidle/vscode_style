@@ -535,5 +535,10 @@
     "file://${userHome}/.vscode-custom/float-clay-menu.js"
   ],
   "window.menuStyle": "custom",
-  "window.dialogStyle": "custom"
+  "window.dialogStyle": "custom",
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "smooth",
+  "workbench.list.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true
 }
