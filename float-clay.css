@@ -24,7 +24,8 @@ html .monaco-workbench.floating-panels .part.titlebar {
 /* ---- ba thẻ: activity bar, sidebar, editor ---- */
 html .monaco-workbench.floating-panels .part.activitybar.left,
 html .monaco-workbench.floating-panels .part.sidebar.left,
-html .monaco-workbench.floating-panels .part.editor {
+html .monaco-workbench.floating-panels .part.editor,
+html .monaco-workbench.floating-panels .part.panel {
   border-radius: 16px !important;
   box-shadow: var(--clay-shadow) !important;
   border-color: transparent !important;
@@ -32,6 +33,11 @@ html .monaco-workbench.floating-panels .part.editor {
 }
 html .monaco-workbench.floating-panels .part.sidebar.left > .content { anchor-name: --clay-sb; }
 html .monaco-workbench.floating-panels .part.editor > .content { anchor-name: --clay-ed; }
+/* panel dưới (terminal, Claude Code...): cùng lề trái/phải với editor để hai thẻ thẳng hàng */
+html .monaco-workbench.floating-panels .part.panel {
+  margin-left: 6px !important;
+  margin-right: 8px !important;
+}
 html .monaco-workbench.floating-panels .part.activitybar.left {
   width: 44px !important;
   margin-left: 8px !important; /* lề ngoài cửa sổ 8px, bằng các khe giữa khối */
@@ -66,6 +72,13 @@ html .monaco-workbench.floating-panels.fullscreen .part.editor {
   height: calc(100% + 15px) !important;
   box-sizing: border-box;
   padding-top: 8px;
+}
+/* khi có panel dưới: editor co lại chừa khe 8px, còn panel mới là thẻ nằm sát đáy (thay editor) */
+html .monaco-workbench.floating-panels.fullscreen.panel-position-bottom:not(.nopanel) .part.editor {
+  height: calc(100% - 4px) !important;
+}
+html .monaco-workbench.floating-panels.fullscreen.panel-position-bottom:not(.nopanel) .part.panel {
+  height: calc(100% + 11px) !important;
 }
 
 /* thanh tab cách viền trên ~10px: editor đệm 6px phía trên (sidebar 8px) */
