@@ -515,6 +515,8 @@
   "workbench.tree.indent": 10,
   "workbench.tree.renderIndentGuides": "none",
   "editor.fontWeight": "400",
+  "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
   "editor.fontSize": 12.5,
   "editor.lineHeight": 22,
   "[markdown]": {
