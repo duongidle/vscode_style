@@ -4,7 +4,7 @@ Giao diện VS Code sáng, bo góc, gọn, kiểu Claude Desktop / Codex. Các k
 
 ![Giao diện mẫu](images/demo.png)
 
-Làm cho **VS Code 1.142** trên macOS. Chưa thử trên Windows và Linux.
+Làm cho **VS Code 1.142** trên macOS.
 
 ## Cài
 

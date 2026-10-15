@@ -620,3 +620,17 @@ html .monaco-workbench .part.statusbar .statusbar-item[id="status.editor.indenta
 html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab:not(.active):not(:hover) .tab-actions {
   opacity: 0;
 }
+
+/* ---- Search / Extensions: ô nhập nằm hẳn trong thẻ (mép phải của sidebar bị cắt 13px) ---- */
+html .monaco-workbench.floating-panels .part.sidebar .search-view .search-widgets-container,
+html .monaco-workbench.floating-panels .part.sidebar .extensions-viewlet > .header {
+  box-sizing: border-box;
+  padding-right: 13px;
+}
+
+/* chữ đang chọn trong ô nhập: màu đất nung nhạt thay cho màu hệ thống */
+html .monaco-workbench input::selection,
+html .monaco-workbench textarea::selection {
+  background: #f0d9c8;
+  color: inherit;
+}
