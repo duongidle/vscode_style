@@ -71,7 +71,6 @@ Nếu sau cập nhật giao diện bị lệch (khe sai, viên thuốc lạc ch�
 - **Dòng menu cao hơn (cần file JS).** Menu nằm trong lớp "shadow DOM" mà CSS ngoài không chạm tới được, và chiều cao dòng (24px) bị cố định bên trong. Vì vậy gói có thêm `float-clay-menu.js` (khoảng 40 dòng), việc duy nhất nó làm là chèn một khối CSS vào lớp đó mỗi khi có menu bật lên (dòng cao 28px, góc bo 10px, đường kẻ ngăn thụt vào). Nó không đọc hay gửi dữ liệu nào ra ngoài; có thể mở file ra đọc. Nếu không muốn dùng JS, bỏ dòng `float-clay-menu.js` khỏi `vscode_custom_css.imports` là xong, menu vẫn đổi màu và bo góc như cũ, chỉ dòng không cao thêm.
 - **Command palette.** Được bo tròn và đổi màu bằng CSS và các màu `quickInput*` trong setting. Mỗi dòng trong code VS Code bị cố định cao 22px nên gói phóng cả khung lên 1.3 lần bằng `transform` rồi thu chữ lại, để dòng cao 28.6px mà chữ vẫn 12.5px.
 - **Panel của extension (Claude Code...).** Nội dung bên trong là webview, CSS này chỉ bo góc và chừa lề, không đổi giao diện bên trong.
-- **Bộ icon dự phòng.** Setting dùng `office-material-icon-theme` (từ extension Office Viewer `cweijan.vscode-office`). CSS vẽ đè toàn bộ icon, bộ này chỉ hiện khi CSS chưa chạy.
 
 ## Chỉnh nhanh
 

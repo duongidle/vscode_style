@@ -104,7 +104,7 @@ elif [ -n "$CODE_BIN" ]; then
   echo "• Cài extension Custom CSS and JS Loader (be5invis.vscode-custom-css)"
   "$CODE_BIN" --install-extension be5invis.vscode-custom-css >/dev/null 2>&1 \
     && echo "  Xong." || echo "  Không cài được tự động, hãy cài tay trong VS Code (tab Extensions)."
-  echo "• Cài bộ icon dự phòng cweijan.vscode-office (tuỳ chọn, chỉ dùng khi CSS không chạy)"
+  echo "• Cài extension phụ trợ cweijan.vscode-office (tuỳ chọn)"
   "$CODE_BIN" --install-extension cweijan.vscode-office >/dev/null 2>&1 \
     && echo "  Xong." || echo "  Bỏ qua."
 else
