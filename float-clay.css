@@ -336,6 +336,20 @@ html .monaco-workbench .monaco-tl-twistie.collapsible::before {
 html .monaco-workbench .monaco-tl-twistie.collapsible.collapsed::before {
   content: "\25B8" !important;
 }
+/* sidebar: ô mũi tên hẹp 12px (gốc 16px) để icon/chữ cấp đầu cách mép thẻ 32/50px như bản mẫu */
+html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie {
+  width: 12px !important;
+}
+html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie.collapsible::before {
+  width: 12px;
+}
+/* tiêu đề "EXPLORER" và dòng thư mục gốc lùi vào 3px cho thẳng hàng với lề của bản mẫu (16px) */
+html .monaco-workbench.floating-panels .part.sidebar .composite.title .title-label {
+  margin-left: 3px;
+}
+html .monaco-workbench.floating-panels .part.sidebar .pane-header {
+  padding-left: 7px;
+}
 
 /* ---- tiêu đề thư mục gốc viết hoa giãn chữ; dòng đang chọn đậm chữ ---- */
 html .monaco-workbench.floating-panels .part.sidebar .pane-header {
