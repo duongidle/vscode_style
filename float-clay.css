@@ -563,3 +563,8 @@ html .monaco-workbench .monaco-editor .scroll-decoration,
 html .monaco-workbench .monaco-scrollable-element > .shadow {
   box-shadow: none !important;
 }
+
+/* thanh cuộn Explorer: chỉ hiện đoạn ngắn 48px ở giữa thanh trượt (độ dài thật do VS Code tính theo nội dung) */
+html .monaco-workbench.floating-panels .part.sidebar .monaco-scrollable-element > .scrollbar.vertical > .slider {
+  clip-path: inset(max(0px, calc(50% - 24px)) 1px round 3px);
+}
