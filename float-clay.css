@@ -12,6 +12,15 @@ html .monaco-workbench.floating-panels {
   --modern-ui-tab-action-padding: 42px; /* chỗ chừa bên phải tab cho nút đóng (mặc định 28px) */
 }
 
+/* ---- nền: dải chuyển màu nhẹ như bản mẫu (thay cho màu phẳng); các lớp nền phía trên để trong suốt cho dải màu lộ ra ---- */
+html .monaco-workbench.floating-panels {
+  background: linear-gradient(135deg, #efe8dc 0%, #f4ece3 100%) !important;
+}
+html .monaco-workbench.floating-panels .monaco-grid-view,
+html .monaco-workbench.floating-panels .part.titlebar {
+  background: transparent !important;
+}
+
 /* ---- ba thẻ: activity bar, sidebar, editor ---- */
 html .monaco-workbench.floating-panels .part.activitybar.left,
 html .monaco-workbench.floating-panels .part.sidebar.left,
