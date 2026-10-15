@@ -6,7 +6,8 @@
 html .monaco-workbench.floating-panels {
   --vscode-cornerRadius-large: 16px !important;
   --modern-ui-window-corner-radius: 17px !important;
-  --clay-shadow: 0 1px 4px 0 rgba(110, 70, 40, 0.3);
+  --clay-shadow: 0 6px 20px -10px rgba(110, 70, 40, 0.35);
+  --clay-pill-shadow: drop-shadow(0 3px 6px rgba(110, 70, 40, 0.2));
   --clay-pill-h: 28px;
   --modern-ui-tab-action-padding: 42px; /* chỗ chừa bên phải tab cho nút đóng (mặc định 28px) */
 }
@@ -17,6 +18,7 @@ html .monaco-workbench.floating-panels .part.sidebar.left,
 html .monaco-workbench.floating-panels .part.editor {
   border-radius: 16px !important;
   box-shadow: var(--clay-shadow) !important;
+  border-color: transparent !important;
   overflow: hidden;
 }
 html .monaco-workbench.floating-panels .part.sidebar.left > .content { anchor-name: --clay-sb; }
@@ -75,7 +77,7 @@ html .monaco-workbench.floating-panels .part.statusbar {
   justify-content: center;
   align-items: flex-end;
   padding: 0 0 4px;
-  filter: drop-shadow(0 2px 5px rgba(110, 70, 40, 0.3));
+  filter: var(--clay-pill-shadow);
 }
 html .monaco-workbench.floating-panels .part.statusbar > .items-container {
   flex: 0 1 auto !important;
@@ -178,7 +180,7 @@ html .monaco-workbench .part.titlebar .command-center {
   max-width: none;
   margin: 0;
   z-index: 1000;
-  filter: drop-shadow(0 2px 5px rgba(110, 70, 40, 0.3));
+  filter: var(--clay-pill-shadow);
 }
 html .monaco-workbench .part.titlebar .command-center .monaco-toolbar,
 html .monaco-workbench .part.titlebar .command-center .monaco-action-bar,
