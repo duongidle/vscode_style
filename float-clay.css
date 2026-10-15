@@ -22,12 +22,12 @@ html .monaco-workbench.floating-panels .part.editor {
 html .monaco-workbench.floating-panels .part.sidebar.left > .content { anchor-name: --clay-sb; }
 html .monaco-workbench.floating-panels .part.editor > .content { anchor-name: --clay-ed; }
 html .monaco-workbench.floating-panels .part.activitybar.left {
-  width: 38px !important;
+  width: 44px !important;
   margin-left: 8px !important; /* lề ngoài cửa sổ 8px, bằng các khe giữa khối */
 }
 /* nới khe giữa các khối: thu hẹp nhẹ sidebar và editor vào phía trong (VS Code giữ cứng khe gốc 4px) */
 html .monaco-workbench.floating-panels .part.sidebar.left {
-  margin-left: 6px !important;
+  margin-left: 12px !important; /* 6px khe + 6px bù cho thanh icon rộng 44px */
   margin-right: 2px !important;
 }
 html .monaco-workbench.floating-panels .part.editor {
@@ -106,10 +106,6 @@ html .monaco-workbench.floating-panels .part.activitybar.left > .content {
   padding-top: 6px;
   padding-bottom: 6px;
 }
-/* thẻ hẹp lại nên dịch nội dung sang trái 3px để các icon nằm chính giữa */
-html .monaco-workbench.floating-panels .part.activitybar.left > .content {
-  transform: translateX(-3px);
-}
 html .monaco-workbench.floating-panels .part.activitybar .action-item .action-label.codicon {
   font-size: 20px !important;
 }
@@ -161,7 +157,7 @@ html .monaco-workbench .part.titlebar .command-center {
   position: fixed;
   position-anchor: --clay-sb;
   left: anchor(--clay-sb left, 58px);
-  width: calc(anchor-size(--clay-sb width, 297px) - 7px);
+  width: calc(anchor-size(--clay-sb width, 297px) - 13px);
   bottom: 4px;
   height: var(--clay-pill-h);
   max-width: none;
@@ -216,15 +212,15 @@ html .monaco-workbench.floating-panels .breadcrumbs-control .codicon {
 /* ---- Danh sách trong sidebar (Explorer...): dòng chọn dạng viên thuốc bo tròn, thư mục đậm hơn tệp ---- */
 html .monaco-workbench.floating-panels .part.sidebar .monaco-list .monaco-list-row {
   margin: 0 4px;
-  width: calc(100% - 23px) !important;
+  width: calc(100% - 29px) !important;
   border-radius: 8px;
 }
 html .monaco-workbench.floating-panels .part.sidebar .monaco-icon-label.folder-icon {
   font-weight: 500;
 }
-/* sidebar bị cắt 7px ở mép phải: kéo thanh cuộn vào trong để vẫn thấy */
+/* sidebar bị cắt 13px ở mép phải: kéo thanh cuộn vào trong để vẫn thấy */
 html .monaco-workbench.floating-panels .part.sidebar .monaco-scrollable-element > .scrollbar.vertical {
-  right: 8px !important;
+  right: 14px !important;
 }
 html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie {
   opacity: 0.65;
