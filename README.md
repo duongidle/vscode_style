@@ -2,6 +2,10 @@
 
 Giao diện sáng, bo góc, tối giản (kiểu Claude Desktop / Codex): Explorer, activity bar và editor là các thẻ nổi bo 16px trên nền kem; hai viên thuốc ở đáy (thanh tìm và status bar); tab dạng viên thuốc; icon tệp là ô vuông bo tròn có ký hiệu riêng cho từng loại.
 
+![Giao diện mẫu](images/demo.png)
+
+*Ảnh là bản mẫu mô phỏng bằng HTML (`demo-mockup.html`), bản thật trong VS Code gần giống chứ không khớp từng pixel.*
+
 Viết và kiểm tra trên **VS Code 1.142.0**. Phần CSS bám vào cấu trúc nội bộ của VS Code nên một bản cập nhật lớn có thể làm lệch vài chỗ.
 
 ## Trong gói này
@@ -13,6 +17,7 @@ Viết và kiểm tra trên **VS Code 1.142.0**. Phần CSS bám vào cấu trú
 | `settings-float-clay.json` | Các setting đi kèm (theme, bảng màu, font, bật chế độ thẻ nổi...) |
 | `install.sh` | Cài tự động trên macOS / Linux |
 | `demo-mockup.html` | Bản mẫu thiết kế ban đầu, mở bằng trình duyệt để so sánh |
+| `images/demo.png` | Ảnh minh hoạ dùng trong README |
 
 ## Lấy từ GitHub
 
