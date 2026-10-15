@@ -1,0 +1,425 @@
+/* float-clay.css — giao diện "thẻ nổi + đất nung" cho VS Code.
+   Viết cho VS Code 1.142.0 (chế độ workbench.experimental.modernUI). Selector bám cấu trúc nội bộ của VS Code,
+   nên một bản cập nhật lớn có thể làm lệch vài chỗ. Phần màu nằm trong settings (xem settings-float-clay.json);
+   file này lo bo góc, khe, bóng, hai viên thuốc ở đáy, icon tệp. Cách cài: xem README.md. */
+
+html .monaco-workbench.floating-panels {
+  --vscode-cornerRadius-large: 16px !important;
+  --modern-ui-window-corner-radius: 17px !important;
+  --clay-shadow: 0 1px 4px 0 rgba(110, 70, 40, 0.3);
+  --clay-pill-h: 28px;
+  --modern-ui-tab-action-padding: 42px; /* chỗ chừa bên phải tab cho nút đóng (mặc định 28px) */
+}
+
+/* ---- ba thẻ: activity bar, sidebar, editor ---- */
+html .monaco-workbench.floating-panels .part.activitybar.left,
+html .monaco-workbench.floating-panels .part.sidebar.left,
+html .monaco-workbench.floating-panels .part.editor {
+  border-radius: 16px !important;
+  box-shadow: var(--clay-shadow) !important;
+  overflow: hidden;
+}
+html .monaco-workbench.floating-panels .part.sidebar.left > .content { anchor-name: --clay-sb; }
+html .monaco-workbench.floating-panels .part.editor > .content { anchor-name: --clay-ed; }
+html .monaco-workbench.floating-panels .part.activitybar.left {
+  width: 38px !important;
+  margin-left: 8px !important; /* lề ngoài cửa sổ 8px, bằng các khe giữa khối */
+}
+/* nới khe giữa các khối: thu hẹp nhẹ sidebar và editor vào phía trong (VS Code giữ cứng khe gốc 4px) */
+html .monaco-workbench.floating-panels .part.sidebar.left {
+  margin-left: 6px !important;
+  margin-right: 2px !important;
+}
+html .monaco-workbench.floating-panels .part.editor {
+  margin-left: 6px !important;  /* 4px gốc của VS Code + 2px */
+  margin-right: 8px !important; /* lề ngoài cửa sổ 8px (gốc 4px) */
+}
+html .monaco-workbench.floating-panels:not(.noactivitybar) .part.sidebar.left {
+  --modern-ui-floating-card-seam-left-color: var(--modern-ui-floating-card-edge-color);
+}
+
+/* ---- kéo khối thẻ lên: thanh tiêu đề trống nên không cần chừa nhiều chỗ ---- */
+/* cửa sổ thường: chừa chỗ cho nút đèn giao thông của macOS */
+html .monaco-workbench.floating-panels .split-view-container:has(> .split-view-view > .part.titlebar) > .split-view-view:has(.part.editor) {
+  margin-top: -8px;
+}
+/* toàn màn hình: không có nút đèn giao thông, kéo sát lên và nới thẻ xuống để giữ khoảng cách với hai viên thuốc */
+html .monaco-workbench.floating-panels.fullscreen .split-view-container:has(> .split-view-view > .part.titlebar) > .split-view-view:has(.part.editor) {
+  margin-top: -27px;
+}
+html .monaco-workbench.floating-panels.fullscreen :is(.split-view-view, .split-view-container, .monaco-scrollable-element, .monaco-split-view2, .monaco-grid-branch-node):has(.part.editor) {
+  overflow: visible !important;
+}
+html .monaco-workbench.floating-panels.fullscreen .part.sidebar.left,
+html .monaco-workbench.floating-panels.fullscreen .part.editor {
+  height: calc(100% + 15px) !important;
+  box-sizing: border-box;
+  padding-top: 8px;
+}
+
+/* thanh tab cách viền trên ~10px: editor đệm 6px phía trên (sidebar 8px) */
+html .monaco-workbench.floating-panels.fullscreen .part.editor {
+  padding-top: 6px;
+}
+
+/* ---- viên thuốc status bar: căn giữa theo thẻ editor ---- */
+html .monaco-workbench.floating-panels .part.statusbar {
+  position: fixed !important;
+  position-anchor: --clay-ed;
+  left: anchor(--clay-ed left, 0px);
+  width: anchor-size(--clay-ed width, 100%) !important;
+  bottom: 0;
+  height: 32px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 0 4px;
+  filter: drop-shadow(0 2px 5px rgba(110, 70, 40, 0.3));
+}
+html .monaco-workbench.floating-panels .part.statusbar > .items-container {
+  flex: 0 1 auto !important;
+  min-width: 0;
+  overflow: hidden;
+  width: auto !important;
+  height: var(--clay-pill-h) !important;
+  background: var(--vscode-sideBar-background);
+}
+html .monaco-workbench.floating-panels .part.statusbar > .left-items {
+  border-radius: 999px 0 0 999px;
+  padding-left: 14px;
+}
+html .monaco-workbench.floating-panels .part.statusbar > .right-items {
+  border-radius: 0 999px 999px 0;
+  padding-right: 14px;
+}
+
+/* ---- activity bar: thẻ ôm vừa các icon ---- */
+html .monaco-workbench.floating-panels .part.activitybar.left {
+  height: fit-content !important;
+  max-height: calc(100% - 14px);
+}
+html .monaco-workbench.floating-panels .part.activitybar.left > .content {
+  height: auto !important;
+  max-height: 100%;
+  gap: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+/* thẻ hẹp lại nên dịch nội dung sang trái 3px để các icon nằm chính giữa */
+html .monaco-workbench.floating-panels .part.activitybar.left > .content {
+  transform: translateX(-3px);
+}
+html .monaco-workbench.floating-panels .part.activitybar .action-item .action-label.codicon {
+  font-size: 20px !important;
+}
+html .monaco-workbench.floating-panels .part.activitybar .action-item .active-item-indicator {
+  border-radius: 8px !important;
+}
+html .monaco-workbench.floating-panels .part.activitybar .action-item .action-label.uri-icon {
+  -webkit-mask-size: 20px !important;
+  mask-size: 20px !important;
+}
+
+/* ---- tab: cao hơn, viên thuốc tròn hẳn ---- */
+html .monaco-workbench.floating-panels .part.editor > .content .editor-group-container > .title.tabs {
+  --editor-group-tab-height: 30px !important;
+}
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab,
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab > .tab-fill {
+  border-radius: 999px !important;
+}
+
+/* ---- thanh tab: lề trái lớn hơn, tab đầu tiên không còn sát viền thẻ ---- */
+html .monaco-workbench.floating-panels .part.editor .title.tabs .tabs-and-actions-container {
+  padding-left: 7px !important;
+}
+
+/* ---- tab: thêm khoảng đệm giữa nền viên thuốc với icon, tiêu đề và nút đóng ---- */
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab {
+  padding-left: 14px !important;
+}
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab > .tab-actions {
+  margin-right: 12px !important;
+}
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab > .monaco-icon-label::before {
+  padding-right: 8px !important;
+}
+
+/* ---- webview (PDF, drawio, Claude...): chừa lề phải cho cân với lề trái ---- */
+html .monaco-workbench.floating-panels .webview-overlay-content:not(.webview-overlay-modal) {
+  width: calc(anchor-size(width) - 14px) !important;
+}
+
+/* ---- webview nằm đè lên thẻ: cắt theo đúng góc bo của thẻ ---- */
+html .monaco-workbench.floating-panels div:has(> .webview-overlay-content) {
+  clip-path: inset(0 round 16px) !important;
+}
+
+/* ---- thanh tìm: ở đáy cửa sổ, thẳng hàng với thẻ Explorer ---- */
+html .monaco-workbench .part.titlebar .command-center {
+  position: fixed;
+  position-anchor: --clay-sb;
+  left: anchor(--clay-sb left, 58px);
+  width: calc(anchor-size(--clay-sb width, 297px) - 7px);
+  bottom: 4px;
+  height: var(--clay-pill-h);
+  max-width: none;
+  margin: 0;
+  z-index: 1000;
+  filter: drop-shadow(0 2px 5px rgba(110, 70, 40, 0.3));
+}
+html .monaco-workbench .part.titlebar .command-center .monaco-toolbar,
+html .monaco-workbench .part.titlebar .command-center .monaco-action-bar,
+html .monaco-workbench .part.titlebar .command-center .actions-container {
+  width: 100%;
+  height: var(--clay-pill-h);
+}
+html .monaco-workbench .part.titlebar .command-center .agent-status-container {
+  flex: 1 1 auto;
+  width: 100%;
+  height: var(--clay-pill-h);
+  background: var(--vscode-sideBar-background);
+  border-color: transparent;
+}
+html .monaco-workbench .part.titlebar .command-center .agent-status-container,
+html .monaco-workbench .part.titlebar .command-center .agent-status-container > * {
+  border-radius: 999px;
+}
+html .monaco-workbench .part.titlebar .command-center .agent-status-pill {
+  width: 100%;
+  height: 100%;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ---- thanh tiêu đề: bỏ cụm icon nhỏ ở góc phải ---- */
+html .monaco-workbench .part.titlebar .titlebar-right .action-toolbar-container {
+  display: none !important;
+}
+
+/* ---- đường dẫn (breadcrumbs): chữ nhỏ hơn, bỏ đường kẻ ngang bên dưới ---- */
+html .monaco-workbench.floating-panels .breadcrumbs-control {
+  border-bottom: none !important;
+  font-size: 11px !important;
+  padding-right: 20px; /* editor bị cắt 6px ở mép phải; 20px = 6px bù + 14px lề, bằng lề trái */
+}
+html .monaco-workbench.floating-panels .breadcrumbs-control .monaco-breadcrumb-item,
+html .monaco-workbench.floating-panels .breadcrumbs-control .monaco-icon-label,
+html .monaco-workbench.floating-panels .breadcrumbs-control .monaco-icon-label-container {
+  font-size: 11px !important;
+}
+html .monaco-workbench.floating-panels .breadcrumbs-control .codicon {
+  font-size: 13px !important;
+}
+
+/* ---- Danh sách trong sidebar (Explorer...): dòng chọn dạng viên thuốc bo tròn, thư mục đậm hơn tệp ---- */
+html .monaco-workbench.floating-panels .part.sidebar .monaco-list .monaco-list-row {
+  margin: 0 4px;
+  width: calc(100% - 23px) !important;
+  border-radius: 8px;
+}
+html .monaco-workbench.floating-panels .part.sidebar .monaco-icon-label.folder-icon {
+  font-weight: 500;
+}
+/* sidebar bị cắt 7px ở mép phải: kéo thanh cuộn vào trong để vẫn thấy */
+html .monaco-workbench.floating-panels .part.sidebar .monaco-scrollable-element > .scrollbar.vertical {
+  right: 8px !important;
+}
+html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie {
+  opacity: 0.65;
+}
+
+/* ---- icon: ô vuông bo tròn có ký hiệu trắng riêng cho từng loại tệp (theo bản mẫu) ---- */
+html .monaco-workbench {
+  --clay-ico-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 4.5A1.5 1.5 0 0 1 3 3h3.2c.4 0 .8.2 1 .5L8 4.5h5A1.5 1.5 0 0 1 14.5 6v6A1.5 1.5 0 0 1 13 13.5H3A1.5 1.5 0 0 1 1.5 12z' fill='%23d4917a'/%3E%3C/svg%3E");
+  --clay-ico-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23a39d8d'/%3E%3Cpath d='M4.8 5.8h6.4M4.8 8h6.4M4.8 10.2h4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-cfg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%237d7a73'/%3E%3Cpath d='M4.8 5.8h6.4M4.8 8h6.4M4.8 10.2h4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-md: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%236f88c4'/%3E%3Cpath d='M3.6 11V5.2l2.1 2.8 2.1-2.8V11' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M11.4 5.2v5.2M9.9 9l1.5 1.7L12.9 9' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-sheet: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%235fa076'/%3E%3Cpath d='M5.2 5.2l5.6 5.6M10.8 5.2l-5.6 5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-doc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%234f78c9'/%3E%3Cpath d='M3.4 5.4l1.7 5.4 2.9-4.6 2.9 4.6 1.7-5.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23d0584d'/%3E%3Cpath d='M5.6 11.4V4.8h2.6a1.9 1.9 0 0 1 0 3.8H5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%239a78c9'/%3E%3Cpath d='M3.4 11.2l3-4 2.2 2.6 1.6-2 2.4 3.4z' fill='white'/%3E%3Ccircle cx='11' cy='5.3' r='1.2' fill='white'/%3E%3C/svg%3E");
+  --clay-ico-drawio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23e08f3c'/%3E%3Ccircle cx='8' cy='5' r='1.5' fill='white'/%3E%3Ccircle cx='4.8' cy='11' r='1.5' fill='white'/%3E%3Ccircle cx='11.2' cy='11' r='1.5' fill='white'/%3E%3Cpath d='M7.2 6.3L5.6 9.7M8.8 6.3l1.6 3.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-code: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%234fa394'/%3E%3Cpath d='M6.2 5.2L3.6 8l2.6 2.8M9.8 5.2L12.4 8l-2.6 2.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-json: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23c99a1b'/%3E%3Cpath d='M6.6 4.6c-1.3 0-1.6.6-1.6 1.6v.8c0 .8-.5 1-1.2 1 .7 0 1.2.2 1.2 1v.8c0 1 .3 1.6 1.6 1.6M9.4 4.6c1.3 0 1.6.6 1.6 1.6v.8c0 .8.5 1 1.2 1-.7 0-1.2.2-1.2 1v.8c0 1-.3 1.6-1.6 1.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-ppt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23e0763f'/%3E%3Cpath d='M5.4 11V8.4M8 11V5M10.6 11V6.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-video: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%238b6bc2'/%3E%3Cpath d='M6.3 4.9l4.8 3.1-4.8 3.1z' fill='white'/%3E%3C/svg%3E");
+}
+html .monaco-workbench .monaco-icon-label.folder-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon::before {
+  background-size: 16px 16px !important;
+  background-position: left center !important;
+  background-repeat: no-repeat !important;
+  padding-right: 6px;
+}
+html .monaco-workbench .monaco-icon-label.folder-icon::before { background-image: var(--clay-ico-folder) !important; }
+html .monaco-workbench .monaco-icon-label.file-icon::before { background-image: var(--clay-ico-file) !important; }
+html .monaco-workbench .monaco-icon-label.file-icon.md-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.markdown-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.markdown-lang-file-icon::before {
+  background-image: var(--clay-ico-md) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.xlsx-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.xls-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.csv-ext-file-icon::before {
+  background-image: var(--clay-ico-sheet) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.docx-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.doc-ext-file-icon::before {
+  background-image: var(--clay-ico-doc) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.pdf-ext-file-icon::before {
+  background-image: var(--clay-ico-pdf) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.png-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.jpg-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.jpeg-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.gif-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.svg-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.webp-ext-file-icon::before {
+  background-image: var(--clay-ico-img) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.drawio-ext-file-icon::before {
+  background-image: var(--clay-ico-drawio) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.js-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.ts-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.mjs-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.css-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.html-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.py-ext-file-icon::before {
+  background-image: var(--clay-ico-code) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.json-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.yml-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.yaml-ext-file-icon::before {
+  background-image: var(--clay-ico-json) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.pptx-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.ppt-ext-file-icon::before {
+  background-image: var(--clay-ico-ppt) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon.mp4-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.mov-ext-file-icon::before,
+html .monaco-workbench .monaco-icon-label.file-icon.webm-ext-file-icon::before {
+  background-image: var(--clay-ico-video) !important;
+}
+html .monaco-workbench .monaco-icon-label.file-icon[class*="claude.md-name"]::before { background-image: var(--clay-ico-cfg) !important; }
+
+/* ---- mũi tên mở/đóng: tam giác nhỏ, mờ ---- */
+html .monaco-workbench .monaco-tl-twistie {
+  width: 16px !important;
+  padding-right: 0 !important; /* padding-left do VS Code đặt theo độ sâu thư mục, không đè */
+}
+html .monaco-workbench .monaco-tl-twistie.collapsible::before {
+  font-family: -apple-system, system-ui, sans-serif !important;
+  content: "\25BE" !important;
+  font-size: 10px !important;
+  color: #a39b8b;
+  transform: none !important;
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+}
+html .monaco-workbench .monaco-tl-twistie.collapsible.collapsed::before {
+  content: "\25B8" !important;
+}
+
+/* ---- tiêu đề thư mục gốc viết hoa giãn chữ; dòng đang chọn đậm chữ ---- */
+html .monaco-workbench.floating-panels .part.sidebar .pane-header {
+  letter-spacing: 0.06em;
+}
+html .monaco-workbench.floating-panels .part.sidebar .monaco-list-row.selected .monaco-icon-label {
+  font-weight: 600;
+}
+
+/* ---- cỡ chữ giao diện: 12.5px như bản mẫu (VS Code mặc định 13px) ---- */
+html .monaco-workbench {
+  --vscode-fontSize-body1: 12.5px !important;
+  font-size: 12.5px;
+}
+html .monaco-workbench.floating-panels .part.sidebar .monaco-list .monaco-list-row,
+html .monaco-workbench.floating-panels .part.sidebar .monaco-list .monaco-icon-label {
+  font-size: 12.5px !important;
+}
+html .monaco-workbench.floating-panels .part.statusbar .statusbar-item-label,
+html .monaco-workbench .part.titlebar .command-center .agent-status-label {
+  font-size: 11.5px;
+}
+
+/* ---- command palette và menu/dropdown: cùng ngôn ngữ thẻ nổi, viên thuốc bo tròn ---- */
+/* menu nằm trong shadow DOM nên chỉ chỉnh được qua biến CSS (kế thừa vào trong) và màu trong settings */
+html .monaco-workbench {
+  --vscode-cornerRadius-medium: 10px !important;
+  --vscode-shadow-lg: 0 14px 40px -12px rgba(110, 70, 40, 0.38);
+}
+html .monaco-workbench .quick-input-widget {
+  border-color: #e8dfd0 !important;
+  box-shadow: 0 14px 40px -12px rgba(110, 70, 40, 0.38) !important;
+}
+html .monaco-workbench .quick-input-widget .monaco-inputbox {
+  border-radius: 12px;
+}
+html .monaco-workbench .quick-input-widget .quick-input-list .monaco-list-row {
+  border-radius: 10px;
+  margin: 0 4px;
+  width: calc(100% - 8px) !important;
+}
+html .monaco-workbench .quick-input-widget .monaco-keybinding-key {
+  border-radius: 6px;
+}
+
+/* ---- command palette thoáng hơn: VS Code cố định mỗi dòng cao 22px trong code, nên phóng cả khung lên 1.3 lần
+   (transform không ảnh hưởng cách VS Code tính toán bên trong) rồi thu nhỏ chữ lại để chữ vẫn 12.5px ---- */
+html .monaco-workbench .quick-input-widget {
+  left: 50% !important;
+  width: calc(600px / 1.3) !important;
+  transform: translateX(-50%) scale(1.3);
+  transform-origin: top center;
+}
+html .monaco-workbench .quick-input-widget .monaco-inputbox,
+html .monaco-workbench .quick-input-widget .quick-input-box input,
+html .monaco-workbench .quick-input-widget .quick-input-list .monaco-list-row {
+  font-size: calc(12.5px / 1.3) !important;
+}
+/* chi tiết nhỏ cũng thu lại theo tỉ lệ để không bị phình: ô phím tắt, nút bánh răng, icon tệp */
+html .monaco-workbench .quick-input-widget .monaco-keybinding-key {
+  font-size: calc(11px / 1.3) !important;
+  padding: 2px 4px !important;
+  border-radius: 5px;
+}
+html .monaco-workbench .quick-input-widget .quick-input-list .actionbar .action-label.codicon {
+  font-size: calc(15px / 1.3) !important;
+}
+html .monaco-workbench .quick-input-widget .quick-input-list-separator {
+  font-size: calc(11px / 1.3) !important;
+}
+html .monaco-workbench .quick-input-widget .quick-input-list-entry-action-bar .action-label {
+  font-size: calc(14px / 1.3) !important;
+}
+html .monaco-workbench .quick-input-widget .monaco-icon-label::before {
+  background-size: calc(16px / 1.3) calc(16px / 1.3) !important;
+}
+
+/* ---- dropdown nằm ngoài shadow DOM (như "Xem trước hình ảnh" ở đường dẫn): chỉnh trực tiếp bằng CSS, cùng số đo với
+   khối chèn trong float-clay-menu.js dành cho menu chuột phải ---- */
+html .monaco-workbench .context-view .monaco-menu {
+  font-size: 12.5px;
+  min-width: 200px;
+}
+html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical {
+  padding: 6px 0;
+}
+html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .action-menu-item {
+  height: 28px !important;
+  margin: 0 6px !important;
+  border-radius: 10px !important;
+}
+html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .action-item.focused > .action-menu-item {
+  background-color: #f5e7dd !important;
+}
+html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .action-label.separator {
+  margin: 6px 14px !important;
+  width: auto !important;
+}

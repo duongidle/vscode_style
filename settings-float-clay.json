@@ -1,0 +1,213 @@
+{
+  "workbench.colorTheme": "Light Modern",
+  "workbench.iconTheme": "office-material-icon-theme",
+  "workbench.experimental.modernUI": true,
+  "workbench.experimental.modernUIEditorTabStyle": "pill",
+  "workbench.experimental.modernUIUppercaseViewHeaders": true,
+  "workbench.colorCustomizations": {
+    "[Light Modern]": {
+      "modernUI.shellBackground": "#f4f0e8",
+      "menu.background": "#fffdf9",
+      "menu.foreground": "#2b2a26",
+      "menu.border": "#e8dfd0",
+      "menu.separatorBackground": "#efe6da",
+      "menu.selectionBackground": "#f5e7dd",
+      "menu.selectionForeground": "#2b2a26",
+      "menu.selectionBorder": "#00000000",
+      "widget.shadow": "#6e462840",
+      "quickInput.background": "#fffdf9",
+      "quickInput.foreground": "#2b2a26",
+      "quickInputList.focusBackground": "#f5e7dd",
+      "quickInputList.focusForeground": "#2b2a26",
+      "quickInputList.focusIconForeground": "#c96442",
+      "quickInputTitle.background": "#f8f2e8",
+      "pickerGroup.foreground": "#a8452a",
+      "pickerGroup.border": "#efe6da",
+      "keybindingLabel.background": "#f6f0e6",
+      "keybindingLabel.border": "#e2d9c9",
+      "keybindingLabel.bottomBorder": "#d9cdbb",
+      "keybindingLabel.foreground": "#7d766a",
+      "editorSuggestWidget.background": "#fffdf9",
+      "editorSuggestWidget.border": "#e8dfd0",
+      "editorSuggestWidget.selectedBackground": "#f5e7dd",
+      "editorHoverWidget.background": "#fffdf9",
+      "editorHoverWidget.border": "#e8dfd0",
+      "surface.border": "#e8dfd0",
+      "modernPanel.border": "#00000000",
+      "modernActivityBar.background": "#fffdf9",
+      "modernActivityBar.border": "#00000000",
+      "modernActivityBarItem.activeBackground": "#f5e7dd",
+      "modernActivityBarItem.activeForeground": "#c96442",
+      "modernActivityBarItem.hoverBackground": "#f8efe6",
+      "modernActivityBarItem.hoverForeground": "#2b2a26",
+      "modernEditorTab.activeBackground": "#f5e7dd",
+      "modernEditorTab.activeHoverBackground": "#f5e7dd",
+      "modernEditorTab.activeForeground": "#b4532f",
+      "modernEditorTab.inactiveBackground": "#00000000",
+      "modernEditorTab.hoverBackground": "#f8efe6",
+      "modernEditorTab.hoverForeground": "#2b2a26",
+      "modernTab.activeBackground": "#f5e7dd",
+      "modernTab.activeForeground": "#b4532f",
+      "modernTab.hoverBackground": "#f8efe6",
+      "modernTab.hoverForeground": "#2b2a26",
+      "titleBar.activeBackground": "#f4f0e8",
+      "titleBar.inactiveBackground": "#f4f0e8",
+      "titleBar.border": "#00000000",
+      "activityBar.background": "#fffdf9",
+      "activityBar.foreground": "#c96442",
+      "activityBar.inactiveForeground": "#7d766a",
+      "activityBar.border": "#00000000",
+      "activityBarBadge.background": "#c96442",
+      "activityBarBadge.foreground": "#ffffff",
+      "sideBar.background": "#fffdf9",
+      "sideBar.foreground": "#2b2a26",
+      "sideBar.border": "#00000000",
+      "sideBarTitle.foreground": "#7d766a",
+      "sideBarSectionHeader.background": "#00000000",
+      "sideBarSectionHeader.foreground": "#7d766a",
+      "sideBarSectionHeader.border": "#00000000",
+      "list.activeSelectionBackground": "#f5e7dd",
+      "list.activeSelectionForeground": "#2b2a26",
+      "list.inactiveSelectionBackground": "#f5e7dd",
+      "list.focusBackground": "#f5e7dd",
+      "list.hoverBackground": "#f8efe6",
+      "editor.background": "#fffdf9",
+      "editor.foreground": "#2b2a26",
+      "editor.lineHighlightBackground": "#faf1e8",
+      "editor.selectionBackground": "#f0d9c8",
+      "editor.inactiveSelectionBackground": "#f5e7dd",
+      "editorCursor.foreground": "#c96442",
+      "editorLineNumber.foreground": "#b8afa0",
+      "editorLineNumber.activeForeground": "#2b2a26",
+      "editorIndentGuide.background1": "#efe6da",
+      "editorIndentGuide.activeBackground1": "#d9cdbb",
+      "editorGroup.border": "#e2d9c9",
+      "editorGroupHeader.tabsBackground": "#fffdf9",
+      "editorGroupHeader.tabsBorder": "#00000000",
+      "editorWidget.background": "#fffdf9",
+      "editorWidget.border": "#e2d9c9",
+      "tab.activeBackground": "#f5e7dd",
+      "tab.unfocusedActiveBackground": "#f5e7dd",
+      "tab.inactiveBackground": "#00000000",
+      "tab.hoverBackground": "#f8efe6",
+      "tab.activeForeground": "#b4532f",
+      "tab.inactiveForeground": "#7d766a",
+      "tab.border": "#00000000",
+      "tab.activeBorder": "#00000000",
+      "tab.activeBorderTop": "#00000000",
+      "breadcrumb.foreground": "#7d766a",
+      "breadcrumb.focusForeground": "#2b2a26",
+      "panel.background": "#fffdf9",
+      "panel.border": "#00000000",
+      "panelTitle.activeForeground": "#2b2a26",
+      "panelTitle.activeBorder": "#c96442",
+      "panelTitle.inactiveForeground": "#7d766a",
+      "terminal.background": "#fffdf9",
+      "terminal.foreground": "#2b2a26",
+      "statusBar.background": "#f4f0e8",
+      "statusBar.noFolderBackground": "#f4f0e8",
+      "statusBar.foreground": "#7d766a",
+      "statusBar.border": "#00000000",
+      "statusBarItem.hoverBackground": "#e6dccb",
+      "statusBarItem.remoteBackground": "#c96442",
+      "statusBarItem.remoteForeground": "#ffffff",
+      "focusBorder": "#c9644266",
+      "button.background": "#c96442",
+      "button.foreground": "#ffffff",
+      "button.hoverBackground": "#b4532f",
+      "badge.background": "#c96442",
+      "badge.foreground": "#ffffff",
+      "progressBar.background": "#c96442",
+      "inputOption.activeBorder": "#c96442",
+      "input.border": "#e2d9c9",
+      "textLink.foreground": "#3f6fb5",
+      "textLink.activeForeground": "#2f5a9a",
+      "scrollbarSlider.background": "#7d766a33",
+      "scrollbarSlider.hoverBackground": "#7d766a55",
+      "scrollbarSlider.activeBackground": "#7d766a77"
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "[Light Modern]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "markup.heading",
+            "entity.name.section.markdown",
+            "punctuation.definition.heading.markdown",
+            "markup.heading.setext"
+          ],
+          "settings": {
+            "foreground": "#a8452a",
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            "markup.bold",
+            "punctuation.definition.bold.markdown"
+          ],
+          "settings": {
+            "foreground": "#2b2a26",
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            "markup.italic"
+          ],
+          "settings": {
+            "foreground": "#2b2a26",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": [
+            "markup.underline.link",
+            "string.other.link.title.markdown",
+            "string.other.link.description.markdown"
+          ],
+          "settings": {
+            "foreground": "#3f6fb5"
+          }
+        },
+        {
+          "scope": [
+            "punctuation.definition.list.begin.markdown",
+            "punctuation.definition.table.markdown",
+            "meta.separator.markdown",
+            "punctuation.separator.table.markdown"
+          ],
+          "settings": {
+            "foreground": "#b0a590"
+          }
+        },
+        {
+          "scope": [
+            "comment",
+            "punctuation.definition.comment"
+          ],
+          "settings": {
+            "foreground": "#9a9186",
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
+  },
+  "workbench.tree.indent": 10,
+  "workbench.tree.renderIndentGuides": "none",
+  "editor.fontWeight": "400",
+  "editor.fontSize": 12.5,
+  "editor.lineHeight": 22,
+  "editor.minimap.enabled": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "explorer.compactFolders": false,
+  "vscode_custom_css.imports": [
+    "file://${userHome}/.vscode-custom/float-clay.css",
+    "file://${userHome}/.vscode-custom/float-clay-menu.js"
+  ],
+  "window.menuStyle": "custom"
+}
