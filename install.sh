@@ -4,18 +4,21 @@
 #   1. chép float-clay.css và float-clay-menu.js vào ~/.vscode-custom/
 #   2. gộp settings-float-clay.json vào settings.json của VS Code (có sao lưu trước)
 #   3. cài extension Custom CSS and JS Loader nếu tìm thấy lệnh `code`
+#   4. cài phông Figtree và Fira Code (trong thư mục font/) nếu máy chưa có
 # Script KHÔNG sửa file của app VS Code. Bước cuối (bật CSS) phải tự làm trong VS Code, xem README.md.
 #
 # Dùng:  ./install.sh          hỏi xác nhận trước khi sửa settings.json
 #        ./install.sh --yes    không hỏi
 #        ./install.sh --no-settings   chỉ chép CSS, không đụng settings.json
+#        ./install.sh --no-fonts      không cài phông
 set -euo pipefail
 
-ASSUME_YES=0; SKIP_SETTINGS=0
+ASSUME_YES=0; SKIP_SETTINGS=0; SKIP_FONTS=0
 for a in "$@"; do
   case "$a" in
     --yes|-y) ASSUME_YES=1 ;;
     --no-settings) SKIP_SETTINGS=1 ;;
+    --no-fonts) SKIP_FONTS=1 ;;
     *) echo "Tham số không hợp lệ: $a"; exit 2 ;;
   esac
 done
@@ -109,6 +112,45 @@ elif [ -n "$CODE_BIN" ]; then
     && echo "  Xong." || echo "  Bỏ qua."
 else
   echo "• Không tìm thấy lệnh 'code'. Hãy cài extension 'Custom CSS and JS Loader' (be5invis.vscode-custom-css) trong VS Code."
+fi
+
+# ---- 4. phông ----
+FONT_SRC="$HERE/font"
+if [ "$SKIP_FONTS" -eq 1 ] || [ "${CLAY_SKIP_FONTS:-0}" = "1" ]; then
+  echo "• Bỏ qua cài phông (--no-fonts)."
+elif [ ! -d "$FONT_SRC" ]; then
+  echo "• Không thấy thư mục font/ cạnh install.sh, bỏ qua cài phông."
+else
+  if [ -n "${CLAY_FONT_DIR:-}" ]; then
+    FONT_DEST="$CLAY_FONT_DIR"            # chỉ dùng để thử nghiệm
+  elif [ "$(uname)" = "Darwin" ]; then
+    FONT_DEST="$HOME/Library/Fonts"
+  else
+    FONT_DEST="${XDG_DATA_HOME:-$HOME/.local/share}/fonts"
+  fi
+  font_installed() {                      # $1 = mẫu tên phông (regex, không phân biệt hoa thường)
+    local list=""
+    command -v fc-list >/dev/null 2>&1 && list="$(fc-list 2>/dev/null || true)"
+    grep -qiE "$1" <<< "$list" && return 0
+    list="$(ls "$FONT_DEST" "$HOME/Library/Fonts" /Library/Fonts "${XDG_DATA_HOME:-$HOME/.local/share}/fonts" /usr/share/fonts 2>/dev/null || true)"
+    grep -qiE "$1" <<< "$list"
+  }
+  install_font() {                        # $1 = tên hiển thị, $2 = mẫu tìm, $3 = thư mục trong font/
+    if font_installed "$2"; then
+      echo "• Phông $1: máy đã có, bỏ qua."
+      return 0
+    fi
+    mkdir -p "$FONT_DEST"
+    local n=0 f
+    for f in "$FONT_SRC/$3"/static/*.ttf; do
+      if [ -f "$f" ]; then cp "$f" "$FONT_DEST/"; n=$((n + 1)); fi
+    done
+    echo "• Đã cài phông $1 ($n file) vào $FONT_DEST"
+  }
+  install_font "Figtree" "figtree" "Figtree"
+  install_font "Fira Code" "fira ?code" "Fira_Code"
+  if command -v fc-cache >/dev/null 2>&1; then fc-cache -f "$FONT_DEST" >/dev/null 2>&1 || true; fi
+  echo "  (Khởi động lại VS Code để nhận phông mới.)"
 fi
 
 cat <<'EOF'
