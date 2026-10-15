@@ -530,3 +530,35 @@ html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button
 html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button.secondary:hover {
   background: #ebdfd0 !important;
 }
+
+/* ---- thanh cuộn: mảnh, bo tròn, lọt vào trong thẻ ---- */
+html .monaco-workbench .monaco-scrollable-element > .scrollbar > .slider {
+  border-radius: 999px !important;
+  background-clip: padding-box !important;
+  box-sizing: border-box !important;
+}
+/* danh sách, panel... (thanh 8px → 6px) */
+html .monaco-workbench .monaco-scrollable-element > .scrollbar.vertical > .slider {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+html .monaco-workbench .monaco-scrollable-element > .scrollbar.horizontal > .slider {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+/* editor: thanh dọc 14px → 6px, dịch vào 6px vì mép phải của editor bị cắt */
+html .monaco-workbench .monaco-editor .monaco-scrollable-element > .scrollbar.vertical > .slider {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+html .monaco-workbench .monaco-editor .monaco-scrollable-element > .scrollbar.horizontal > .slider {
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+html .monaco-workbench .monaco-editor .monaco-scrollable-element > .scrollbar.vertical {
+  transform: translateX(-6px);
+}
+/* bỏ vệt bóng ngang khi cuộn */
+html .monaco-workbench .monaco-editor .scroll-decoration {
+  box-shadow: none !important;
+}

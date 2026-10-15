@@ -122,9 +122,9 @@
       "input.border": "#e2d9c9",
       "textLink.foreground": "#3f6fb5",
       "textLink.activeForeground": "#2f5a9a",
-      "scrollbarSlider.background": "#7d766a33",
-      "scrollbarSlider.hoverBackground": "#7d766a55",
-      "scrollbarSlider.activeBackground": "#7d766a77"
+      "scrollbarSlider.background": "#7d766a44",
+      "scrollbarSlider.hoverBackground": "#7d766a66",
+      "scrollbarSlider.activeBackground": "#7d766a88"
     }
   },
   "editor.tokenColorCustomizations": {
