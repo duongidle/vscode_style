@@ -103,14 +103,29 @@ html .monaco-workbench.floating-panels .part.activitybar.left > .content {
   height: auto !important;
   max-height: 100%;
   gap: 8px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 html .monaco-workbench.floating-panels .part.activitybar .action-item .action-label.codicon {
   font-size: 20px !important;
 }
+/* ô icon 30x30, cách nhau 6px (tâm tới tâm 36px) như bản mẫu */
+html .monaco-workbench.floating-panels .part.activitybar {
+  --activity-bar-width: 30px !important;
+  --activity-bar-action-height: 30px !important;
+  --activity-bar-action-gap: 6px !important;
+}
 html .monaco-workbench.floating-panels .part.activitybar .action-item .active-item-indicator {
   border-radius: 8px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+/* hai khối icon (trên/dưới) nằm giữa thẻ 44px: nội dung rộng 36px, ô 30px nên dịch 3px */
+html .monaco-workbench.floating-panels .part.activitybar.left > .content .monaco-action-bar {
+  margin-left: 3px;
 }
 html .monaco-workbench.floating-panels .part.activitybar .action-item .action-label.uri-icon {
   -webkit-mask-size: 20px !important;
