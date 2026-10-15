@@ -30,6 +30,8 @@ Nếu báo "installation appears to be corrupt" thì chọn **Don't show again**
 
 - Mỗi lần VS Code cập nhật, chạy lại **Enable Custom CSS and JS**. Nếu giao diện bị lệch sau cập nhật lớn, đó là do CSS bám vào cấu trúc nội bộ của VS Code.
 - Gói đặt `window.menuStyle` và `window.dialogStyle` thành `custom` để VS Code tự vẽ menu và hộp thoại (trên macOS mặc định là của hệ điều hành, không đổi được giao diện). Muốn trả về như cũ, xoá hai dòng này.
+- Phông giao diện là **Figtree**. Cần cài phông này vào máy (tải ở Google Fonts); chưa cài thì VS Code tự dùng phông hệ thống, không lỗi.
+- Thanh status chỉ giữ vị trí con trỏ và số lỗi (đã ẩn Copilot, chuông, ngôn ngữ, mã hoá...). Muốn hiện lại, xoá khối "status bar" trong `float-clay.css`.
 - Nếu đang dùng `window.density.layout: compact` thì bỏ đi, vì nó làm khe giữa các thẻ bị nén.
 
 ## Gỡ

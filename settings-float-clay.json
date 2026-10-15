@@ -200,6 +200,14 @@
   "editor.fontWeight": "400",
   "editor.fontSize": 12.5,
   "editor.lineHeight": 22,
+  "[markdown]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100,
+    "editor.fontSize": 13.5,
+    "editor.lineHeight": 1.75,
+    "editor.padding.top": 12,
+    "editor.padding.bottom": 12
+  },
   "editor.minimap.enabled": false,
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.navigationControl.enabled": false,

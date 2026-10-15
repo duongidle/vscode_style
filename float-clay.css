@@ -568,3 +568,42 @@ html .monaco-workbench .monaco-scrollable-element > .shadow {
 html .monaco-workbench.floating-panels .part.sidebar .monaco-scrollable-element > .scrollbar.vertical > .slider {
   clip-path: inset(max(0px, calc(50% - 24px)) 1px round 3px);
 }
+
+/* ---- phông giao diện: Figtree (cài sẵn trong máy); code vẫn dùng editor.fontFamily ---- */
+html .monaco-workbench {
+  --vscode-font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  --monaco-font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+}
+
+/* ---- màn hình trống: bỏ logo và bảng phím tắt, chỉ để một dòng gợi ý mờ ---- */
+html .monaco-workbench .editor-group-watermark .letterpress,
+html .monaco-workbench .editor-group-watermark .shortcuts {
+  display: none !important;
+}
+html .monaco-workbench .editor-group-watermark .watermark-container::after {
+  content: "Chọn một tệp ở Explorer, hoặc nhấn ⇧⌘P để mở lệnh";
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #b3a998;
+}
+
+/* ---- status bar: chỉ giữ vị trí con trỏ và số lỗi ---- */
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.host"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.notifications"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="chat.statusBarEntry"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="be5invis.vscode-custom-css"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.editor.mode"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.languageStatus"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.editor.eol"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.editor.encoding"],
+html .monaco-workbench .part.statusbar .statusbar-item[id="status.editor.indentation"] {
+  display: none !important;
+}
+
+/* ---- tab: nút đóng của tab không đang chọn chỉ hiện khi rê chuột ---- */
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab:not(.active):not(:hover) .tab-actions {
+  opacity: 0;
+}
