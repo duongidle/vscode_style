@@ -209,5 +209,6 @@
     "file://${userHome}/.vscode-custom/float-clay.css",
     "file://${userHome}/.vscode-custom/float-clay-menu.js"
   ],
-  "window.menuStyle": "custom"
+  "window.menuStyle": "custom",
+  "window.dialogStyle": "custom"
 }

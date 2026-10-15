@@ -449,3 +449,73 @@ html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .a
   margin: 6px 14px !important;
   width: auto !important;
 }
+
+/* ---- thông báo (góc dưới bên phải) và hộp thoại giữa màn hình ---- */
+/* thông báo: thẻ kem bo 16px, viền và bóng cùng kiểu các thẻ khác, nhấc lên 4px để không dính viên thuốc status */
+html .monaco-workbench .notifications-toasts {
+  transform: translateY(-4px);
+}
+html .monaco-workbench .notifications-toasts .notification-toast {
+  background: #fffdf9 !important;
+  border: 1px solid #ebe3d6 !important;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -12px rgba(110, 70, 40, 0.38), 0 2px 6px rgba(110, 70, 40, 0.08);
+  overflow: hidden;
+}
+/* lề trong rộng hơn; nới khung thêm đúng bằng phần lề để chữ không bị xuống dòng (VS Code tính chiều cao theo bề rộng chữ) */
+html .monaco-workbench .notifications-toasts .notifications-list-container {
+  width: 472px !important;
+}
+html .monaco-workbench .notifications-toasts .notification-list-item {
+  padding-left: 14px;
+  padding-right: 12px;
+}
+html .monaco-workbench .notification-list-item .notification-list-item-buttons-container .monaco-button {
+  border-radius: 999px;
+  border: none !important;
+  font-weight: 500;
+  padding: 5px 16px;
+}
+html .monaco-workbench .notification-list-item .notification-list-item-buttons-container {
+  margin-right: 6px;
+}
+
+/* hộp thoại: cùng ngôn ngữ — thẻ kem, viền mảnh, bóng mềm, nút viên thuốc */
+html .monaco-workbench .monaco-dialog-modal-block.dimmed {
+  background: rgba(70, 52, 36, 0.32) !important;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-shadow {
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -16px rgba(80, 50, 30, 0.45), 0 4px 12px rgba(80, 50, 30, 0.1) !important;
+}
+html .monaco-workbench .monaco-dialog-modal-block .monaco-dialog-box {
+  background: #fffdf9 !important;
+  border: 1px solid #ebe3d6 !important;
+  border-radius: 16px;
+  padding: 6px 8px 2px;
+  font-size: 12.5px;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-message-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-message-detail {
+  line-height: 1.65;
+  color: #6b655a;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons {
+  gap: 8px;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button {
+  border-radius: 999px;
+  border: none !important;
+  padding: 6px 18px;
+  font-weight: 500;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button.secondary {
+  background: #f4ede3 !important;
+  color: #3b3a36 !important;
+}
+html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button.secondary:hover {
+  background: #ebdfd0 !important;
+}
