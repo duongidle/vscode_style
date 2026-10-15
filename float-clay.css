@@ -246,7 +246,7 @@ html .monaco-workbench.floating-panels .part.sidebar .monaco-icon-label.folder-i
 }
 /* sidebar bị cắt 13px ở mép phải: kéo thanh cuộn vào trong để vẫn thấy */
 html .monaco-workbench.floating-panels .part.sidebar .monaco-scrollable-element > .scrollbar.vertical {
-  right: 14px !important;
+  right: 15px !important; /* cách mép thẻ 4px, bằng thanh cuộn của editor */
 }
 html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie {
   opacity: 0.65;
@@ -558,7 +558,8 @@ html .monaco-workbench .monaco-editor .monaco-scrollable-element > .scrollbar.ho
 html .monaco-workbench .monaco-editor .monaco-scrollable-element > .scrollbar.vertical {
   transform: translateX(-6px);
 }
-/* bỏ vệt bóng ngang khi cuộn */
-html .monaco-workbench .monaco-editor .scroll-decoration {
+/* bỏ vệt bóng ngang khi cuộn (editor và danh sách) */
+html .monaco-workbench .monaco-editor .scroll-decoration,
+html .monaco-workbench .monaco-scrollable-element > .shadow {
   box-shadow: none !important;
 }
