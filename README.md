@@ -1,6 +1,6 @@
 # VS Code "thẻ nổi + đất nung"
 
-Giao diện VS Code sáng, bo góc, gọn, kiểu Claude Desktop / Codex. Các khối là thẻ nổi bo 16px trên nền kem, nhấn màu đất nung.
+Giao diện VS Code bo góc, gọn, kiểu Claude Desktop / Codex. Các khối là thẻ nổi bo 16px trên nền kem, nhấn màu đất sét. Màu theo bảng màu của Anthropic/Claude, có cả bản sáng (Light Modern, mặc định) và tối (Dark Modern).
 
 ![Giao diện mẫu](images/demo.png)
 

@@ -11,7 +11,7 @@
       border-radius: 10px !important;
     }
     .monaco-menu .monaco-action-bar.vertical .action-item.focused > .action-menu-item {
-      background-color: #f5e7dd !important;
+      background-color: var(--vscode-menu-selectionBackground) !important;
     }
     .monaco-menu .monaco-action-bar.vertical .action-label.separator {
       margin: 6px 14px !important;

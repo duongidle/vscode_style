@@ -3,18 +3,24 @@
    nên một bản cập nhật lớn có thể làm lệch vài chỗ. Phần màu nằm trong settings (xem settings-float-clay.json);
    file này lo bo góc, khe, bóng, hai viên thuốc ở đáy, icon tệp. Cách cài: xem README.md. */
 
+html .monaco-workbench {
+  --clay-shadow-rgb: 31, 30, 29; /* cùng màu chữ chính của bảng màu; theme tối đổi sang đen thuần */
+}
+html .monaco-workbench:is(.vs-dark, .hc-black) {
+  --clay-shadow-rgb: 0, 0, 0;
+}
 html .monaco-workbench.floating-panels {
   --vscode-cornerRadius-large: 16px !important;
   --modern-ui-window-corner-radius: 17px !important;
-  --clay-shadow: 0 6px 20px -10px rgba(110, 70, 40, 0.35);
-  --clay-pill-shadow: drop-shadow(0 3px 6px rgba(110, 70, 40, 0.2));
+  --clay-shadow: 0 6px 20px -10px rgba(var(--clay-shadow-rgb), 0.35);
+  --clay-pill-shadow: drop-shadow(0 3px 6px rgba(var(--clay-shadow-rgb), 0.2));
   --clay-pill-h: 28px;
   --modern-ui-tab-action-padding: 42px; /* chỗ chừa bên phải tab cho nút đóng (mặc định 28px) */
 }
 
-/* ---- nền: dải chuyển màu nhẹ như bản mẫu (thay cho màu phẳng); các lớp nền phía trên để trong suốt cho dải màu lộ ra ---- */
+/* ---- nền: màu trang phẳng lấy từ theme (cùng màu title bar); các lớp nền phía trên để trong suốt cho màu này lộ ra ---- */
 html .monaco-workbench.floating-panels {
-  background: linear-gradient(135deg, #efe8dc 0%, #f4ece3 100%) !important;
+  background: var(--vscode-titleBar-activeBackground) !important;
 }
 html .monaco-workbench.floating-panels .monaco-grid-view,
 html .monaco-workbench.floating-panels .part.titlebar {
@@ -281,21 +287,21 @@ html .monaco-workbench.floating-panels .part.sidebar .monaco-tl-twistie {
   opacity: 0.65;
 }
 
-/* ---- icon: ô vuông bo tròn có ký hiệu trắng riêng cho từng loại tệp (theo bản mẫu) ---- */
+/* ---- icon: ô vuông bo tròn có ký hiệu trắng riêng cho từng loại tệp; thư mục màu đất sét, tệp một màu xám ấm của bảng màu, md màu nhấn, CLAUDE.md dùng icon tia sao Claude ---- */
 html .monaco-workbench {
   --clay-ico-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 4.5A1.5 1.5 0 0 1 3 3h3.2c.4 0 .8.2 1 .5L8 4.5h5A1.5 1.5 0 0 1 14.5 6v6A1.5 1.5 0 0 1 13 13.5H3A1.5 1.5 0 0 1 1.5 12z' fill='%23d4917a'/%3E%3C/svg%3E");
-  --clay-ico-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23a39d8d'/%3E%3Cpath d='M4.8 5.8h6.4M4.8 8h6.4M4.8 10.2h4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-cfg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%237d7a73'/%3E%3Cpath d='M4.8 5.8h6.4M4.8 8h6.4M4.8 10.2h4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-md: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%236f88c4'/%3E%3Cpath d='M3.6 11V5.2l2.1 2.8 2.1-2.8V11' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M11.4 5.2v5.2M9.9 9l1.5 1.7L12.9 9' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-sheet: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%235fa076'/%3E%3Cpath d='M5.2 5.2l5.6 5.6M10.8 5.2l-5.6 5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-doc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%234f78c9'/%3E%3Cpath d='M3.4 5.4l1.7 5.4 2.9-4.6 2.9 4.6 1.7-5.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23d0584d'/%3E%3Cpath d='M5.6 11.4V4.8h2.6a1.9 1.9 0 0 1 0 3.8H5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%239a78c9'/%3E%3Cpath d='M3.4 11.2l3-4 2.2 2.6 1.6-2 2.4 3.4z' fill='white'/%3E%3Ccircle cx='11' cy='5.3' r='1.2' fill='white'/%3E%3C/svg%3E");
-  --clay-ico-drawio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23e08f3c'/%3E%3Ccircle cx='8' cy='5' r='1.5' fill='white'/%3E%3Ccircle cx='4.8' cy='11' r='1.5' fill='white'/%3E%3Ccircle cx='11.2' cy='11' r='1.5' fill='white'/%3E%3Cpath d='M7.2 6.3L5.6 9.7M8.8 6.3l1.6 3.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-code: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%234fa394'/%3E%3Cpath d='M6.2 5.2L3.6 8l2.6 2.8M9.8 5.2L12.4 8l-2.6 2.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-json: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23c99a1b'/%3E%3Cpath d='M6.6 4.6c-1.3 0-1.6.6-1.6 1.6v.8c0 .8-.5 1-1.2 1 .7 0 1.2.2 1.2 1v.8c0 1 .3 1.6 1.6 1.6M9.4 4.6c1.3 0 1.6.6 1.6 1.6v.8c0 .8.5 1 1.2 1-.7 0-1.2.2-1.2 1v.8c0 1-.3 1.6-1.6 1.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-ppt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23e0763f'/%3E%3Cpath d='M5.4 11V8.4M8 11V5M10.6 11V6.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  --clay-ico-video: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%238b6bc2'/%3E%3Cpath d='M6.3 4.9l4.8 3.1-4.8 3.1z' fill='white'/%3E%3C/svg%3E");
+  --clay-ico-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M4.8 5.8h6.4M4.8 8h6.4M4.8 10.2h4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-claude: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7.97 7.50L7.64 1.21M8.29 7.59L10.87 3.90M8.42 7.73L13.87 4.19M8.50 8.04L13.38 8.47M8.45 8.23L13.70 10.91M8.21 8.45L10.03 12.35M8.03 8.50L8.36 14.89M7.71 8.41L5.02 12.26M7.58 8.27L2.46 11.59M7.50 7.96L3.02 7.56M7.55 7.77L1.94 4.91M7.79 7.55L5.72 3.11' stroke='%23D97757' stroke-width='1.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-md: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%23C96442'/%3E%3Cpath d='M3.6 11V5.2l2.1 2.8 2.1-2.8V11' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M11.4 5.2v5.2M9.9 9l1.5 1.7L12.9 9' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-sheet: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M5.2 5.2l5.6 5.6M10.8 5.2l-5.6 5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-doc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M3.4 5.4l1.7 5.4 2.9-4.6 2.9 4.6 1.7-5.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M5.6 11.4V4.8h2.6a1.9 1.9 0 0 1 0 3.8H5.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M3.4 11.2l3-4 2.2 2.6 1.6-2 2.4 3.4z' fill='white'/%3E%3Ccircle cx='11' cy='5.3' r='1.2' fill='white'/%3E%3C/svg%3E");
+  --clay-ico-drawio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Ccircle cx='8' cy='5' r='1.5' fill='white'/%3E%3Ccircle cx='4.8' cy='11' r='1.5' fill='white'/%3E%3Ccircle cx='11.2' cy='11' r='1.5' fill='white'/%3E%3Cpath d='M7.2 6.3L5.6 9.7M8.8 6.3l1.6 3.4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-code: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M6.2 5.2L3.6 8l2.6 2.8M9.8 5.2L12.4 8l-2.6 2.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-json: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M6.6 4.6c-1.3 0-1.6.6-1.6 1.6v.8c0 .8-.5 1-1.2 1 .7 0 1.2.2 1.2 1v.8c0 1 .3 1.6 1.6 1.6M9.4 4.6c1.3 0 1.6.6 1.6 1.6v.8c0 .8.5 1 1.2 1-.7 0-1.2.2-1.2 1v.8c0 1-.3 1.6-1.6 1.6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-ppt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M5.4 11V8.4M8 11V5M10.6 11V6.8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  --clay-ico-video: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='4.5' fill='%2387867F'/%3E%3Cpath d='M6.3 4.9l4.8 3.1-4.8 3.1z' fill='white'/%3E%3C/svg%3E");
 }
 html .monaco-workbench .monaco-icon-label.folder-icon::before,
 html .monaco-workbench .monaco-icon-label.file-icon::before {
@@ -356,7 +362,7 @@ html .monaco-workbench .monaco-icon-label.file-icon.mov-ext-file-icon::before,
 html .monaco-workbench .monaco-icon-label.file-icon.webm-ext-file-icon::before {
   background-image: var(--clay-ico-video) !important;
 }
-html .monaco-workbench .monaco-icon-label.file-icon[class*="claude.md-name"]::before { background-image: var(--clay-ico-cfg) !important; }
+html .monaco-workbench .monaco-icon-label.file-icon[class*="claude.md-name"]::before { background-image: var(--clay-ico-claude) !important; }
 
 /* ---- mũi tên mở/đóng: tam giác nhỏ, mờ ---- */
 html .monaco-workbench .monaco-tl-twistie {
@@ -367,7 +373,7 @@ html .monaco-workbench .monaco-tl-twistie.collapsible::before {
   font-family: -apple-system, system-ui, sans-serif !important;
   content: "\25BE" !important;
   font-size: 10px !important;
-  color: #a39b8b;
+  color: var(--vscode-icon-foreground);
   transform: none !important;
   display: inline-block;
   width: 16px;
@@ -418,11 +424,11 @@ html .monaco-workbench .part.titlebar .command-center .agent-status-label {
 /* menu nằm trong shadow DOM nên chỉ chỉnh được qua biến CSS (kế thừa vào trong) và màu trong settings */
 html .monaco-workbench {
   --vscode-cornerRadius-medium: 10px !important;
-  --vscode-shadow-lg: 0 14px 40px -12px rgba(110, 70, 40, 0.38);
+  --vscode-shadow-lg: 0 14px 40px -12px rgba(var(--clay-shadow-rgb), 0.38);
 }
 html .monaco-workbench .quick-input-widget {
-  border-color: #e8dfd0 !important;
-  box-shadow: 0 14px 40px -12px rgba(110, 70, 40, 0.38) !important;
+  border-color: var(--vscode-editorWidget-border) !important;
+  box-shadow: 0 14px 40px -12px rgba(var(--clay-shadow-rgb), 0.38) !important;
 }
 html .monaco-workbench .quick-input-widget .monaco-inputbox {
   border-radius: 12px;
@@ -483,7 +489,7 @@ html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .a
   border-radius: 10px !important;
 }
 html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .action-item.focused > .action-menu-item {
-  background-color: #f5e7dd !important;
+  background-color: var(--vscode-menu-selectionBackground) !important;
 }
 html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .action-label.separator {
   margin: 6px 14px !important;
@@ -491,15 +497,15 @@ html .monaco-workbench .context-view .monaco-menu .monaco-action-bar.vertical .a
 }
 
 /* ---- thông báo (góc dưới bên phải) và hộp thoại giữa màn hình ---- */
-/* thông báo: thẻ kem bo 16px, viền và bóng cùng kiểu các thẻ khác, nhấc lên 4px để không dính viên thuốc status */
+/* thông báo: thẻ nổi bo 16px, viền và bóng cùng kiểu các thẻ khác, nhấc lên 4px để không dính viên thuốc status */
 html .monaco-workbench .notifications-toasts {
   transform: translateY(-4px);
 }
 html .monaco-workbench .notifications-toasts .notification-toast {
-  background: #fffdf9 !important;
-  border: 1px solid #ebe3d6 !important;
+  background: var(--vscode-editorWidget-background) !important;
+  border: 1px solid var(--vscode-editorWidget-border) !important;
   border-radius: 16px;
-  box-shadow: 0 10px 30px -12px rgba(110, 70, 40, 0.38), 0 2px 6px rgba(110, 70, 40, 0.08);
+  box-shadow: 0 10px 30px -12px rgba(var(--clay-shadow-rgb), 0.38), 0 2px 6px rgba(var(--clay-shadow-rgb), 0.08);
   overflow: hidden;
 }
 /* lề trong rộng hơn; nới khung thêm đúng bằng phần lề để chữ không bị xuống dòng (VS Code tính chiều cao theo bề rộng chữ) */
@@ -520,17 +526,17 @@ html .monaco-workbench .notification-list-item .notification-list-item-buttons-c
   margin-right: 6px;
 }
 
-/* hộp thoại: cùng ngôn ngữ — thẻ kem, viền mảnh, bóng mềm, nút viên thuốc */
+/* hộp thoại: cùng ngôn ngữ — thẻ nổi, viền mảnh, bóng mềm, nút viên thuốc */
 html .monaco-workbench .monaco-dialog-modal-block.dimmed {
-  background: rgba(70, 52, 36, 0.32) !important;
+  background: rgba(var(--clay-shadow-rgb), 0.32) !important;
 }
 html .monaco-workbench .monaco-dialog-modal-block .dialog-shadow {
   border-radius: 16px;
-  box-shadow: 0 24px 60px -16px rgba(80, 50, 30, 0.45), 0 4px 12px rgba(80, 50, 30, 0.1) !important;
+  box-shadow: 0 24px 60px -16px rgba(var(--clay-shadow-rgb), 0.45), 0 4px 12px rgba(var(--clay-shadow-rgb), 0.1) !important;
 }
 html .monaco-workbench .monaco-dialog-modal-block .monaco-dialog-box {
-  background: #fffdf9 !important;
-  border: 1px solid #ebe3d6 !important;
+  background: var(--vscode-editorWidget-background) !important;
+  border: 1px solid var(--vscode-editorWidget-border) !important;
   border-radius: 16px;
   padding: 6px 8px 2px;
   font-size: 12.5px;
@@ -541,7 +547,7 @@ html .monaco-workbench .monaco-dialog-modal-block .dialog-message-text {
 }
 html .monaco-workbench .monaco-dialog-modal-block .dialog-message-detail {
   line-height: 1.65;
-  color: #6b655a;
+  color: var(--vscode-descriptionForeground);
 }
 html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons {
   gap: 8px;
@@ -553,11 +559,11 @@ html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button
   font-weight: 500;
 }
 html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button.secondary {
-  background: #f4ede3 !important;
-  color: #3b3a36 !important;
+  background: var(--vscode-button-secondaryBackground) !important;
+  color: var(--vscode-button-secondaryForeground) !important;
 }
 html .monaco-workbench .monaco-dialog-modal-block .dialog-buttons .monaco-button.secondary:hover {
-  background: #ebdfd0 !important;
+  background: var(--vscode-button-secondaryHoverBackground) !important;
 }
 
 /* ---- thanh cuộn: mảnh, bo tròn, lọt vào trong thẻ ---- */
@@ -616,7 +622,7 @@ html .monaco-workbench .editor-group-watermark .watermark-container::after {
   text-align: center;
   white-space: nowrap;
   font-size: 13px;
-  color: #b3a998;
+  color: var(--vscode-icon-foreground);
 }
 
 /* ---- status bar: chỉ giữ vị trí con trỏ và số lỗi ---- */
@@ -647,7 +653,7 @@ html .monaco-workbench.floating-panels .part.sidebar .extensions-viewlet > .head
 /* chữ đang chọn trong ô nhập: màu đất nung nhạt thay cho màu hệ thống */
 html .monaco-workbench input::selection,
 html .monaco-workbench textarea::selection {
-  background: #f0d9c8;
+  background: var(--vscode-editor-selectionBackground);
   color: inherit;
 }
 
