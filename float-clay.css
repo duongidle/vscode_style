@@ -86,6 +86,19 @@ html .monaco-workbench.floating-panels.fullscreen .part.editor {
   padding-top: 6px;
 }
 
+/* thẻ editor được kéo lên đè vào vùng titlebar; vùng kéo cửa sổ của titlebar nuốt chuột ở nửa trên thanh tab nên phải tắt kéo trên thẻ editor */
+html .monaco-workbench.floating-panels .part.editor {
+  -webkit-app-region: no-drag;
+}
+/* titlebar nằm đè lên phần trên thanh tab (editor bị kéo lên 8px, toàn màn hình 27px) nên chặn chuột ở nửa trên tab:
+   cho titlebar "xuyên chuột", chỉ giữ lại các điều khiển thật sự cần bấm */
+html .monaco-workbench.floating-panels .part.titlebar {
+  pointer-events: none;
+}
+html .monaco-workbench.floating-panels .part.titlebar :is(.command-center, .menubar, .action-toolbar-container, .update-toolbar-container, .center-adjacent-toolbar-container, .window-controls-container) {
+  pointer-events: auto;
+}
+
 /* ---- viên thuốc status bar: căn giữa theo thẻ editor ---- */
 html .monaco-workbench.floating-panels .part.statusbar {
   position: fixed !important;
@@ -160,9 +173,12 @@ html .monaco-workbench.floating-panels .part.activitybar .action-item .action-la
 html .monaco-workbench.floating-panels .part.editor > .content .editor-group-container > .title.tabs {
   --editor-group-tab-height: 30px !important;
 }
-html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab,
+/* bo tròn chỉ ở lớp nền (.tab-fill); thẻ .tab giữ hình chữ nhật để rê/bấm trúng cả các góc, không chỉ sát chữ */
 html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab > .tab-fill {
   border-radius: 999px !important;
+}
+html .monaco-workbench.floating-panels .part.editor .tabs-container > .tab {
+  border-radius: 0 !important;
 }
 
 /* ---- thanh tab: lề trái lớn hơn, tab đầu tiên không còn sát viền thẻ ---- */
